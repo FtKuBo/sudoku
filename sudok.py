@@ -73,26 +73,27 @@ def sudoku(puzzle):
     
     chiffre=[1,2,3,4,5,6,7,8,9]
     
+    
+    rempli=[]
+    
     for i in range(len(puzzle)):
-        
-        chiffre_ligne = chiffreligne(i,puzzle)
-
         for y in range(len(puzzle[i])):
             
-            chiffre_colonne = chiffrecolonne(i,y,puzzle)
-            
-            chiffre_bloc = chiffrebloc(i,y,puzzle)
-            
-            L = chiffre_bloc+chiffre_ligne+chiffre_colonne
-            
-            FL = listfin(L)
+            if puzzle[i][y]==0:
+                
+                rempli=[(i,y)]
 
-    print(casesuivante((0,3),puzzle))
-            
-    print(puzzle)
-        
-        
-        
-        
-        
-    return puzzle
+                L = chiffrebloc(i,y,puzzle)+chiffreligne(i,puzzle)+chiffrecolonne(i,y,puzzle)
+
+                FL = listfin(L)
+                
+                print(FL)
+
+                break
+            else:
+                continue
+            break
+    
+# créer une boucle qui ne se stoppe que si il n'ya plus de 0 dans la grille
+# si il n'ya plus d'element dans FL on revient en arriére jusqu'à ce qui est plus de deux issues
+#labyrinthe exemple
